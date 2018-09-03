@@ -18,10 +18,13 @@ public class Scanner {
      */
     public static void main(String[] args) {
         // checks to see if we are given any arguments
+        args = new String[1];
+        args[0] = "/home/rr/Workspace/brokenquark/NCSUCC18/HW1/src/Application/foo.c";
         if (args.length < 1) {
             System.err.println("Please provide an input file to process");
             System.exit(1);
         }
+
 
         String fileName = args[0];
         Scan scan = new Scan(fileName);
@@ -38,9 +41,11 @@ public class Scanner {
                 // check to see if the token is an identifer but not main
                 if (tokenPair.getKey() == TokenNames.Identifiers && !tokenPair.getValue().equals("main")) {
                     String newName = "cs512" + tokenPair.getValue();
+                    //System.out.println(tokenPair.getValue());
                     writer.print(newName);
                 } else {
                     // just add it to the output with out modifying the values
+                    //System.out.println(tokenPair.getValue());
                     writer.print(tokenPair.getValue());
                 }
             }

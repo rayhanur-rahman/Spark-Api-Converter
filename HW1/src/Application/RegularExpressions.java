@@ -5,7 +5,7 @@ package Application; /**
 /**
  * @author Danny Reinheimer
  */
-public class RegularExpressions {
+public class RegularExpressions{
 
 
     // Array of reserved words
@@ -53,12 +53,46 @@ public class RegularExpressions {
      * @param str The input string that is being pasrsed which will be read one charecter at a time
      * @return boolean indicating if it is an identifier
      */
+
+    public static boolean checkIfCharacterIsAlpha(char ch){
+        if(ch == 95 || (ch>=65 && ch <= 90) || ((ch>=97 && ch <= 122)))
+            return true;
+        else
+            return false;
+    }
+
+    public static boolean checkIfCharacterIsAlphanumeric(char ch){
+        if(ch == 95 || (ch>=65 && ch <= 90) || (ch>=97 && ch <= 122)
+                || ((ch>=48 && ch <= 57)))
+            return true;
+        else
+            return false;
+    }
+
+    //65-90 97-122 48-57 95
     public boolean isIdentifier(String str) {
         // TODO: Implement the recognition of identifiers
+
+        if(str.isEmpty())
+            return false;
+        boolean isIdentifier = false;
+        char firstLetter = str.charAt(0);
+        isIdentifier = checkIfCharacterIsAlpha(firstLetter);
+        if(isIdentifier == false){
+            //System.out.println(str+" "+isIdentifier);
+            return false;}
+        int index = 1;
+        for(index = 1; index < str.length(); index = index+1){
+            if (checkIfCharacterIsAlphanumeric(str.charAt(index)))
+                continue;
+            else {
+                //System.out.println(str+" "+"false");
+                return false;}
+        }
+        //System.out.println(str+" "+"true");
         return true;
-
-
     }
+
 
 
     /***

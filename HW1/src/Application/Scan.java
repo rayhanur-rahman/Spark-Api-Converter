@@ -61,6 +61,7 @@ public class Scan {
             System.exit(1);
         }
         char ch = '\u001a';  //end of file character
+
         return ch;
     }
 
@@ -77,14 +78,29 @@ public class Scan {
         String characters = "";  // A string containing all the found characters so fare
         char ch;
         // Loop until we reach the end of line or end of file
-        while ((ch = getNextChar()) != '\n' && ch != '\u001a') {
+
+        //!= '\n' && ch
+        while ((ch = getNextChar()) != '\u001a') {
             characters += "" + ch;
+
+            if(characters.length() > 2 && characters.charAt(0)=='/' && characters.charAt(1)=='/' && characters.endsWith("\n")) {
+                System.out.println("bump");
+                String temp = "";
+                int i;
+                for ( i = 0; i < characters.length()-1; i++){
+                    if (characters.charAt(i) != '/' && characters.charAt(i) != '\n')
+                        temp = temp+characters.charAt(i);
+                }
+                characters = "/*"+temp+"*/\n";
+            }
+
             // check for token
             currentToken = token.getToken(characters);
             if (currentToken != TokenNames.None) {
                 foundToken = true;
                 lastFoundToken = currentToken;
             }
+            System.out.println(ch+ " :...: "+characters);
             // if we have already found a token and the current token is none
             // then we no the token is the current string minus the last character
             // to avoid erros we ignore // since it will be picked up latter
@@ -93,9 +109,13 @@ public class Scan {
                 lastReadChar = characters.charAt(characters.length() - 1); // save the last character to use it to start from
                 useLastReadChar = true;
                 Pair<TokenNames, String> pair = new Pair<TokenNames, String>(lastFoundToken, tokenValue);
+
+                System.out.println("token: "+pair.getValue());
+                System.out.println();
                 return pair;
             }
         }
+
         // check to see if we are at the end of line and if we previously found a token
         // we do this because some tokens require the end of line character
         if (ch == '\n' && lastFoundToken == TokenNames.None) {
