@@ -9,11 +9,11 @@ public class RegularExpressions{
 
 
     // Array of reserved words
-    private String[] reservedWords = {"int", "void", "if", "while", "return", "read", "write", "print", "continue", "break", "binary",
+    public String[] reservedWords = {"int", "void", "if", "while", "return", "read", "write", "print", "continue", "break", "binary",
             "decimal"};
 
     // Array of symbols
-    private String[] symbols = {"(", ")", "{", "}", "[", "]", ",", ";", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=",
+    public String[] symbols = {"(", ")", "{", "}", "[", "]", ",", ";", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=",
             "=", "&&", "||"};
 
     /**
@@ -69,6 +69,8 @@ public class RegularExpressions{
             return false;
     }
 
+
+    //todo implemented the identifier check
     //65-90 97-122 48-57 95
     public boolean isIdentifier(String str) {
         // TODO: Implement the recognition of identifiers
@@ -150,6 +152,8 @@ public class RegularExpressions{
             }
         }
         // if no matches then not a symbol
+
+
         return false;
     }
 

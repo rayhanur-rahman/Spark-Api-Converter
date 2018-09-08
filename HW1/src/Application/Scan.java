@@ -19,6 +19,7 @@ public class Scan {
     private boolean foundToken;
     private char lastReadChar;  // if we had to back track we save the last character
     private boolean useLastReadChar;
+    RegularExpressions re = new RegularExpressions();
 
     /**
      * Constructor that constructs the scanner class
@@ -79,12 +80,14 @@ public class Scan {
         char ch;
         // Loop until we reach the end of line or end of file
 
+
+        //todo my contribution here - read unless end of file, handled // type of comments
         //!= '\n' && ch
         while ((ch = getNextChar()) != '\u001a') {
             characters += "" + ch;
 
+
             if(characters.length() > 2 && characters.charAt(0)=='/' && characters.charAt(1)=='/' && characters.endsWith("\n")) {
-                System.out.println("bump");
                 String temp = "";
                 int i;
                 for ( i = 0; i < characters.length()-1; i++){
@@ -100,7 +103,7 @@ public class Scan {
                 foundToken = true;
                 lastFoundToken = currentToken;
             }
-            System.out.println(ch+ " :...: "+characters);
+            //System.out.println(ch+ " :...: "+characters);
             // if we have already found a token and the current token is none
             // then we no the token is the current string minus the last character
             // to avoid erros we ignore // since it will be picked up latter
@@ -110,8 +113,8 @@ public class Scan {
                 useLastReadChar = true;
                 Pair<TokenNames, String> pair = new Pair<TokenNames, String>(lastFoundToken, tokenValue);
 
-                System.out.println("token: "+pair.getValue());
-                System.out.println();
+                //System.out.println("token: "+pair.getValue());
+                //System.out.println();
                 return pair;
             }
         }
@@ -144,6 +147,8 @@ public class Scan {
                 useLastReadChar = true;
                 return pair;
             }
+
+
         }
 
         // if we have the end of file character see if there was a token before it
@@ -151,6 +156,20 @@ public class Scan {
             Pair<TokenNames, String> pair = new Pair<TokenNames, String>(lastFoundToken, characters);
             return pair;
         }
+
+        if (ch == '\u001a' && lastFoundToken == TokenNames.None) {
+            boolean isInvalid = false;
+
+            for(int x = 0; x < characters.length(); x++){
+                if (characters.charAt(x) > 0 || characters.charAt(x) < 128
+                 && (characters.charAt(x) != '\n' || characters.charAt(x) != ' '))
+                {
+                    System.out.println("invalid input");
+                    return null;
+                }
+            }
+        }
+
 
 //		System.out.println("Error parsing input");
 //		System.exit(0);

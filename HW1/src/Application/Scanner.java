@@ -18,8 +18,6 @@ public class Scanner {
      */
     public static void main(String[] args) {
         // checks to see if we are given any arguments
-        args = new String[1];
-        args[0] = "/home/rr/Workspace/brokenquark/NCSUCC18/HW1/src/Application/foo.c";
         if (args.length < 1) {
             System.err.println("Please provide an input file to process");
             System.exit(1);
