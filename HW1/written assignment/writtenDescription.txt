@@ -1,0 +1,16 @@
+4. For problem 4c: a value less than a dollar should have "0" before
+the decimal point (e.g., "$0.99" rather than "$.99").
+
+5. Problem 2: FA should be DFA.
+
+6. As our example DFA shows, any transition not appearing in an DFA is
+considered illegal; you don't have to explicitly express 'Dead' or
+'Error' states.
+
+1. Question 1: when you write the informal descriptions, take the descriptions in Question 2 as examples in terms of the expected format of the informal descriptions. 
+
+2. Question 4 (c): The currency should not have unnecessary leading zeros (e.g., $004.15 is wrong, $0.15 is fine). 
+
+3. Question 5(e): please note that in an algebraic expression that contains parentheses, the parentheses must be balanced---that is, a left parenthesis must have a right parenthesis pairing with it in the expression and vise versa. 
+
+4. Question 7: when you write your NFA or DFA, you are expected to draw their diagrams. 

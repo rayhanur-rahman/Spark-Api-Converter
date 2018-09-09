@@ -1,0 +1,7 @@
+ote for the Programming Assignment:
+The identifier checking function in the regular expression class has been implemented. Still, there were some other problems in the given program
+    1. It could not process meta statement such as comments starting with //. 
+       The program was not taking newline character. Hence, the meta statement checking for comments was always returning false for comments. It has been fixed. 
+    2. It could not show error message given the wrong symbol such as @. 
+       If there were still some characters left with no identifiable tokens and it reaches the EOF – that means there are some invalid inputs there. It has been fixed applying this logic. 
+       

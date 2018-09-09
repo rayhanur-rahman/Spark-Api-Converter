@@ -1,0 +1,34 @@
+"Engineering A Compiler" textbook (2nd Edition):
+Page 80: 1 (b, c); 2 (b, c); 4 (c); 5 (e); 7. only the third regular
+expression (a,b,c).
+Note: The knowledge for solving Problem 7 will be taught in our next
+lecture.
+If you don't have access to the textbook, you may see the scanned copy
+in this attachment.
+
+Submission instruction: a single PDF file, put into a compressed package with the scanner code. Your answer can be a scanned handwritten copy or electronically typed copy. Illegible answers will be ignored in grading.
+No late submissions will be accepted.
+
+Hints:
+1. Regular expressions should be expressed in strings with only the
+three basic operators (concatenation, alternation, kleene closure)
+used; you may use some names as short representations of some constant
+symbols (e.g., Dig -> 0, 1, 2, ..., 9); recursive definitions (e.g.,
+X->X a) are not allowed.
+
+2. For problems that ask you to write the regular expressions for a
+language, if you believe that no regular expressions can represent the
+language, just state that and then provide the reasons.
+
+3. An important amendment to problem 5(e) in HW1: An
+expression in the language to express must have balanced usage of
+parentheses if it uses parentheses.
+
+4. For problem 4c: a value less than a dollar should have "0" before
+the decimal point (e.g., "$0.99" rather than "$.99").
+
+5. Problem 2: FA should be DFA.
+
+6. As our example DFA shows, any transition not appearing in an DFA is
+considered illegal; you don't have to explicitly express 'Dead' or
+'Error' states.
