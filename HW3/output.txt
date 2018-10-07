@@ -1,0 +1,49 @@
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser automaton.c
+pass variable 5 function 6 statement 48
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser binrep.c
+pass variable 2 function 2 statement 21
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser branch.c
+pass variable 2 function 1 statement 6
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser errorstring.c
+Failed to open file 'errorstring.c'.
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser errorString.c
+error :  Illegal character '%' found on line 2.
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser expression.c
+pass variable 2 function 1 statement 3
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser fibonacci.c
+pass variable 5 function 3 statement 17
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser formulae.c
+pass variable 12 function 2 statement 31
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser funcall.c
+pass variable 1 function 8 statement 10
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser funcall2.c
+pass variable 1 function 5 statement 7
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser illegal.c
+pass variable 4 function 2 statement 15
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser loop.c
+pass variable 2 function 1 statement 6
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser mandel.c
+pass variable 8 function 6 statement 34
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser max.c
+pass variable 2 function 2 statement 6
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser parameter.c
+pass variable 1 function 2 statement 5
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser parse.c
+error : parser error
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser parse2.c
+error :  Illegal character '@' found on line 6.
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser polymorphism.c
+pass variable 2 function 2 statement 6
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser recursion.c
+pass variable 1 function 2 statement 5
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser sort.c
+pass variable 9 function 3 statement 127
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser square.c
+pass variable 2 function 2 statement 6
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser tax.c
+pass variable 24 function 2 statement 87
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser times8.c
+pass variable 2 function 3 statement 4
+rr@rr-Inspiron-5570:~/Desktop/project2/C++/bin$ ./parser trivial.c
+pass variable 1 function 2 statement 3
+

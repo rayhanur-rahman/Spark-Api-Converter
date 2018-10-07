@@ -1,0 +1,2 @@
+/usr/bin/g++-4.8 -O3 -std=c++11 -I ./include  -c src/parser.cpp -o objects/parser.o
+Makefile:31: recipe for target 'objects/parser.o' failed
