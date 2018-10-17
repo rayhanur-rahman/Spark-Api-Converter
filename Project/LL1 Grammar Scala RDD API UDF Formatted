@@ -1,0 +1,33 @@
+Program -> sc #dot range #lb1 @number #comma @number #rb1 #dot MapOps collect #lb1 #rb1.
+MapOps ->  map #lb1 UDF #rb1 #dot MapOps
+        | .
+UDF -> @identifier #equal Expression.
+Expression -> #lb2 ComplexExpr #rb2 
+        | PureExprs.
+ComplexExpr -> AssignExprs PureExprs.
+AssignExprs -> AssignExpr #semicolon AssignExprs 
+    | .
+AssignExpr -> val @identifier #equal PureExpr.
+PureExpr -> @identifier IdentifierFactor
+            | #lb1 PureExpr #rb1 
+            | if #lb1 CompExpr #rb1 PureExpr else PureExpr.
+
+PureExprs -> PureExpr PureExprFactor.
+
+PureExprFactor -> #comma PureExpr PureExprFactor
+    | Op PureExpr PureExprFactor
+    | .
+
+IdentifierFactor -> #dot @identifier 
+            | .
+CompExpr -> PureExprs Comp PureExprs.
+Op -> #plus 
+    | #minus 
+    | #multiply
+    | #mod.
+Comp -> #doubleequal 
+        | #gt 
+        | #lt 
+        | #notequal 
+        | #gtequal
+        | #ltequal.

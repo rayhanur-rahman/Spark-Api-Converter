@@ -1,0 +1,27 @@
+<Program> -> sc.range(<number>,<number>).<MapOps>collect()
+
+<MapOps> ->  map(<UDF>).<MapOps> | epsilon
+
+<UDF> -> <identifier> = <Expression>
+
+<Expression> -> { <ComplexExpr> } | <PureExprs>
+
+<ComplexExpr> -> <AssignExprs> <PureExprs>
+
+<AssignExprs> -> <AssignExpr> ; <AssignExprs> | epsilon
+
+<AssignExpr> -> val <identifier> = <PureExpr>
+
+<PureExpr> -> <identifier> <IdentifierFactor> | ( <PureExpr> ) | if ( <CompExpr> ) <PureExpr> else <PureExpr>
+
+<PureExprs> -> <PureExpr> <PureExprFactor>
+
+<PureExprFactor> -> , <PureExpr> <PureExprFactor>| Op <PureExpr> <PureExprFactor> | epsilon
+
+<IdentifierFactor> -> . <identifier> | epsilon
+
+<CompExpr> -> <PureExprs> <Comp> <PureExprs>
+
+Op -> + | - | * | %
+
+<Comp> -> == | > | < | != | >= | <=
