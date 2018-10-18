@@ -19,9 +19,8 @@
 
 %% Title information
 \title[Course Project Writeup - 0]{Course Project Writeup - 0}         
-\titlenote{} 
 \subtitle{SPARK API Converter}                    
-\subtitlenote{with subtitle note}       
+
 
 \author{Md Rayhanur Rahman}
 \authornote{unity id: 200255928}          %% \authornote is optional;
@@ -62,10 +61,10 @@ This report contains the initial concept notes from the SCALA API Converter prog
 \section{The Problem}
 In this project, we need to build a source code converter which can transform these following things along with some additional tasks. 
 \begin{enumerate}
-	\item Getting introduced with Apache Spark, setting it up in a docker container and writing some piece of code in Spark RDD, Dataset and Dataframe API
-	\item Spark RDD API to Spark Dataset API
-	\item Spark RDD API to Spark Dataframe API
-	\item Implementing some Spark SQL Api calls to Scala functions
+	\item \textbf{RQ1:} Getting introduced with Apache Spark, setting it up in a docker container and writing some piece of code in Spark RDD, Dataset and Dataframe API
+	\item \textbf{RQ2:} Spark RDD API to Spark Dataset API
+	\item \textbf{RQ3:} Spark RDD API to Spark Dataframe API
+	\item \textbf{RQ4:} Implementing some Spark SQL Api calls to Scala functions
 \end{enumerate}
 
 \section{Background and Motivation}
@@ -75,12 +74,36 @@ Spark is very popular these days for distributed computing tasks such as data an
 To the best of our knowledge after performing an exhaustive search, there is no automatic transformer for this problem. Although there are some good practices and tutorials on how to convert RDD API code to Dataset and Dataframe API, but those have to be done by a programmer and is a manual, time consuming process. 
 
 \section{Methodology}
+RQ1 and RQ4 are pretty straightforward. All that is needed to be performed is to install docker in the system, deploy the spark image there and then playing with the spark API to learn how to use it. But RQ2 and RQ3 is a sizable task. Here is the abstract thoughts on how to solve these two problems. 
+
+\begin{enumerate}
+	\item \textbf{RQ2:} It should not be that much challanging. A tokenizer needs to be developed that can extract all the tokens from a RDD API code sequence. Then, using the RDD to Dataframe transformation rule, the RDD tokens need to be replace with the corresponding Dataframe tokens.
+	\item \textbf{RQ3:} It is not that straightforward as the previous task. Apart from the tokenizer, a parser needs to developed that can build an AST of the RDD API. For parsing, the provided grammar needs to be also converted to a LL1 or LR1 as the provided grammar is ambiguous. After building the AST, UDF part from the RDD API needs to be extracted and replaced with the SQL API. But this is challenging because a custom set of SQL rules and grammars need to be developed to replace UDF tokens with SQL. tokens. Basically, a lambda expression needs to be converted to a declarative SQL expression to achieve the goal. 
+\end{enumerate}  
 
 \section{Testing Criteria}
+The transformer program should be standalone and self packaged. Hence, there should be no need for configuration or settings file. It will be designed in such a way so that the tester can test it just by running the scripts and providing appropriate input files. Custom test cases can be written as well to test some sample inputs and outputs. The programming language that is preferred to be used is either Java or Python with ANTLR4 for handling the grammar. However, the whole scanner and parser can also be written from scratch. The code samples as input and produced output code samples must preserve the same meaning and produce the same result. That should be the key testing criteria. 
 
 \section{Workload Distribution}
+These are the breakdown of the whole project work:
+\begin{enumerate}
+	\item Setting up Spark and writing programs in three different API - Maruful
+	\item Building a Scanner for RDD - Rayhanur
+	\item Replacing RDD tokens with Dataset tokens - Rayhanur
+	\item Building a Parser for RDD - Rayhanur
+	\item Building an AST generator for RDD - Rayhanur
+	\item Converting the provided grammar to LL1 or LR1 - Rayhanur
+	\item Developing custom rules for Spark SQL - Maruful
+	\item Converting RDD UDF to Spark SQL - Maruful
+	\item Writing Scala functions for several Spark SQL Api - Maruful
+\end{enumerate}
 
 \section{Timeline}
+\begin{enumerate}
+	\item Part 1 \& 2 is expected to be finished by November 1
+	\item Part 3 is expected to be finished by November 28
+	\item Other miscellaneous task such as report writing, test cases, packaging are expected to be finished by December 1
+\end{enumerate}
 
 
 
@@ -88,14 +111,13 @@ To the best of our knowledge after performing an exhaustive search, there is no 
 
 
 %% Bibliography
-\bibliography{bibfile}
-\bibliographystyle{ACM-Reference-Format}
+%\bibliography{bibfile}
+%\bibliographystyle{ACM-Reference-Format}
+%
+%
+%%% Appendix
+%\appendix
+%\section{Appendix}
 
-
-%% Appendix
-\appendix
-\section{Appendix}
-
-Text of appendix \ldots
 
 \end{document}

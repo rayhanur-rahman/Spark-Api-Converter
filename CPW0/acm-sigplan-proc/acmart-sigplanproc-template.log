@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  17 OCT 2018 20:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  17 OCT 2018 22:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -739,46 +739,48 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-(./acmart-sigplanproc-template.bbl
+Overfull \hbox (1.93927pt too wide) in paragraph at lines 64--65
+\OT1/cmr/m/n/10 (-20) piece of code in Spark RDD, Dataset and Dataframe
+ []
 
-Package natbib Warning: Empty `thebibliography' environment on input line 40.
+[1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-) [1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+] [2.2
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 123.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 123.
 
 (./acmart-sigplanproc-template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 123.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 123.
 Package rerunfilecheck Info: File `acmart-sigplanproc-template.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 847A7C63DC2B290D1D6306A68AEA3C36;1206.
+(rerunfilecheck)             Checksum: 94E42A97FBD77701233CC96E2182B7A8;1014.
  ) 
 Here is how much of TeX's memory you used:
- 15514 strings out of 494923
- 225668 string characters out of 6180741
- 370946 words of memory out of 5000000
- 18381 multiletter control sequences out of 15000+600000
- 17180 words of font info for 76 fonts, out of 8000000 for 9000
+ 15509 strings out of 494923
+ 225177 string characters out of 6180741
+ 373945 words of memory out of 5000000
+ 18345 multiletter control sequences out of 15000+600000
+ 15024 words of font info for 79 fonts, out of 8000000 for 9000
  175 hyphenation exceptions out of 8191
- 60i,15n,94p,921b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,16n,94p,921b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/rr/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0600.600pk>
- </home/rr/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.600pk> <
-/home/rr/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </h
-ome/rr/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/tcbx1440.600pk></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmti8.pfb>
-Output written on acmart-sigplanproc-template.pdf (1 page, 105604 bytes).
+ </home/rr/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.600pk></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmti8.pfb>
+Output written on acmart-sigplanproc-template.pdf (2 pages, 131898 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
- 18 named destinations out of 1000 (max. 500000)
- 15457 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 136 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
+ 14929 words of extra memory for PDF output out of 17280 (max. 10000000)
 
