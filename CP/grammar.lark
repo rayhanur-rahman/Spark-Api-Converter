@@ -1,0 +1,42 @@
+// rdd grammar
+start : SC actions*
+    actions : DOT RANGELP rangeparams* RANGERP
+            | DOT TEXTFILELP URI TEXTFILERP
+            | DOT MAPLP FUNC MAPRP
+            | DOT FILTERLP FUNC FILTERRP
+            | DOT REDUCELP FUNC REDUCERP 
+            | DOT REDUCEBYKEYLP FUNC REDUCEBYKEYRP
+            | DOT SORTBYLP FUNC SORTBYRP
+            | DOT COLLECT
+
+    rangeparams : NUMBER (COMMA NUMBER)?
+
+    SC : "sc"
+    DOT : /[.]/
+    COMMA : /[,]/
+    RANGELP : "range" /[ ]*["("]/
+    RANGERP : /[")"]/
+    TEXTFILELP : "textFile" /[ ]*["("]/
+    TEXTFILERP : /[")"]/
+    MAPLP : "map" /[ ]*["("]/
+    MAPRP : /[")"]/
+    FILTERLP : "filter" /[ ]*["("]/
+    FILTERRP : /[")"]/
+    REDUCELP : "reduce" /[ ]*["("]/
+    REDUCERP : /[")"]/
+    REDUCEBYKEYLP : "reduceByKey" /[ ]*["("]/
+    REDUCEBYKEYRP : /[")"]/
+    SORTBYLP : "sortBy" /[ ]*["("]/
+    SORTBYRP : /[")"]/
+    COLLECT : "collect" /[ ]*["("][ ]*/ /[")"]/
+
+    URI : ( /["\""]/ | /["'"]/ ) /[\\\a-zA-Z.:\/]*/ ( /["\""]/ | /["'"]/ )
+    FUNC : "<func>"
+
+
+    %import common.CNAME -> ID
+    %import common.SIGNED_NUMBER -> NUMBER
+    %import common.WS
+    %ignore WS
+
+
