@@ -1,6 +1,8 @@
 from lark import Lark, lexer, tree
 import sys
 
+# just install lark-parser from pip
+
 grammar = open('grammar.lark', 'r').read()
 parser = Lark(grammar, parser='lalr', keep_all_tokens=False)
 
