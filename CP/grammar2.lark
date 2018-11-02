@@ -1,18 +1,18 @@
 // rdd grammar
 start : SC actions*
-    actions : DOT RANGE LP rangeparams* RP
-            | DOT TEXTFILE LP URI RP
-            | DOT MAP LP func RP
-            | DOT FILTER LP func RP
-            | DOT REDUCE LP func RP 
-            | DOT REDUCEBYKEY LP func RP
-            | DOT SORTBY LP func RP
-            | DOT COLLECT LP RP
+    actions : DOT RANGELP rangeparams* RANGERP
+            | DOT TEXTFILELP URI TEXTFILERP
+            | DOT MAPLP mapfunction MAPRP
+            | DOT FILTERLP func2 FILTERRP
+            | DOT REDUCELP func REDUCERP 
+            | DOT REDUCEBYKEYLP func REDUCEBYKEYRP
+            | DOT SORTBYLP func SORTBYRP
+            | DOT COLLECT
 
     rangeparams : NUMBER (COMMA NUMBER)?
-
-
-    func : ID ARROW expression
+    func : ID ARROW
+    func2 : ID ARROW expression
+    mapfunction : ID ARROW expression
     expression : simpleexpression 
                | LB complexexpression RB
     simpleexpression : pureexpression 
@@ -26,9 +26,9 @@ start : SC actions*
     assignmentexpression : VAL ID EQUAL pureexpression
     pureexpression : ID
                    | ID DOT ID
-                   | LP pureexpression RP
+                   | LP pureexpression MAPRP
                    | pureexpression OP pureexpression
-                   | IF LP comparisonexpression RP pureexpression ELSE pureexpression
+                   | IF LP comparisonexpression MAPRP pureexpression ELSE pureexpression
     comparisonexpression : pureexpression COMP pureexpression
 
     SC : "sc"
@@ -37,29 +37,40 @@ start : SC actions*
     ELSE : "else"
     EQUAL : "="
     DOT : /[.]/
-    OP : /[ ]*["+"\-*""%"][ ]*/
+    OP : /[ ]*[+-][ ]*/
     COMP : ( /[ ]*[=][=][ ]*/ | /[ ]*[>][ ]*/ | /[ ]*[<][ ]*/ | /[ ]*[!][=][ ]*/ | /[ ]*[>][=][ ]*/ | /[ ]*[<][=][ ]*/ )
     COMMA : /[,]/
     SEMICOLON : /[;]/
     ARROW : /[ ]*[=][>][ ]*/
     LB : /[ ]*[{][ ]*/
     RB : /[ ]*[}][ ]*/
+    RANGELP : "range" /[ ]*["("]/
+    RANGERP : /[")"]/
+    TEXTFILELP : "textFile" /[ ]*["("]/
+    TEXTFILERP : /[")"]/
+    MAPLP : "map" /[ ]*["("]/
+    MAPRP : /[")"]/
+    FILTERLP : "filter" /[ ]*["("]/
+    FILTERRP : /[")"]/
+    REDUCELP : "reduce" /[ ]*["("]/
+    REDUCERP : /[")"]/
+    REDUCEBYKEYLP : "reduceByKey" /[ ]*["("]/
+    REDUCEBYKEYRP : /[")"]/
+    SORTBYLP : "sortBy" /[ ]*["("]/
+    SORTBYRP : /[")"]/
+    COLLECT : "collect" /[ ]*["("][ ]*/ /[")"]/
     LP : /[ ]*["("][ ]*/
-    RP : /[ ]*[")"][ ]*/
-    RANGE : "range"
-    TEXTFILE : "textFile"
-    MAP : "map"
-    FILTER : "filter"
-    REDUCE : "reduce"
-    REDUCEBYKEY : "reduceByKey"
-    SORTBY : "sortBy"
-    COLLECT : "collect"
+    //RP : /[ ]*[")"][ ]*/
 
     URI : ( /["\""]/ | /["'"]/ ) /[\\\a-zA-Z.:\/]*/ ( /["\""]/ | /["'"]/ )
-    //FUNC : "<func>"
+   
+    //func : ID ARROW 
+
+
 
     %import common.CNAME -> ID
     %import common.SIGNED_NUMBER -> NUMBER
     %import common.WS
     %ignore WS
+
 
