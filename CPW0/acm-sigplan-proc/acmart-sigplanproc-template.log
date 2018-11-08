@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.24)  1 NOV 2018 19:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.24)  8 NOV 2018 10:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -819,27 +819,25 @@ Overfull \hbox (1.93927pt too wide) in paragraph at lines 64--65
 
 [1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2.2
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 123.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 123.
+] [2.2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
 
 (./acmart-sigplanproc-template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 123.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 123.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
 Package rerunfilecheck Info: File `acmart-sigplanproc-template.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 94E42A97FBD77701233CC96E2182B7A8;1014.
+(rerunfilecheck)             Checksum: 7122567E3811671AF14EA68B0CCE0391;1100.
  ) 
 Here is how much of TeX's memory you used:
- 15561 strings out of 494586
- 225571 string characters out of 6177801
+ 15598 strings out of 494586
+ 225897 string characters out of 6177801
  381088 words of memory out of 5000000
- 18716 multiletter control sequences out of 15000+600000
- 15024 words of font info for 79 fonts, out of 8000000 for 9000
+ 18719 multiletter control sequences out of 15000+600000
+ 16324 words of font info for 92 fonts, out of 8000000 for 9000
  175 hyphenation exceptions out of 8191
- 60i,16n,94p,921b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,16n,94p,1250b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/rr/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0600.600pk>
  </home/rr/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.600pk></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sh
@@ -850,11 +848,12 @@ st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti8.pfb>
-Output written on acmart-sigplanproc-template.pdf (2 pages, 131759 bytes).
+s/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mti8.pfb>
+Output written on acmart-sigplanproc-template.pdf (2 pages, 151025 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
- 30 named destinations out of 1000 (max. 500000)
- 14929 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 156 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 16985 words of extra memory for PDF output out of 17280 (max. 10000000)
 
