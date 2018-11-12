@@ -4,7 +4,7 @@ import sys
 # just install lark-parser from pip
 
 grammar = open('grammar.lark', 'r').read()
-parser = Lark(grammar, parser='lalr', keep_all_tokens=False)
+parser = Lark(grammar, parser='lalr', keep_all_tokens=True)
 
 def processTree(node, list, prev):
     if type(node) is lexer.Token:
@@ -85,6 +85,7 @@ def parse(program):
     tokens = []
     terminals = []
     for inst in parse_tree.children:
+        print(f'### {inst}')
         processTree(inst, tokens, terminals)
 
     print(f'{terminals}')
@@ -106,9 +107,9 @@ def parse(program):
 def transform():
     text = r'''sc.range(8,10)
     .textFile('input.txt')
-    .reduce(a=> x+c, if (y == kl) j else l%d )
+    .map(x => { val z = x % 2; ( x+2, if (z+3>0) x else y ) } )
 '''
-    print(f'input: {text}')
+    # print(f'input: {text}')
     print(f'output: ')
     try:
         parse(text)
