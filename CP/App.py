@@ -85,10 +85,10 @@ def parse(program):
     tokens = []
     terminals = []
     for inst in parse_tree.children:
-        print(f'### {inst}')
+        # print(f'### {inst}')
         processTree(inst, tokens, terminals)
 
-    print(f'{terminals}')
+    # print(f'{terminals}')
     replaceLPTokens(tokens, terminals)
     replaceReduceTokens(tokens, terminals)
     replaceReduceByKeyTokens(tokens, terminals)
@@ -109,7 +109,7 @@ def transform():
     .textFile('input.txt')
     .map(x => { val z = x % 2; ( x+2, if (z+3>0) x else y ) } )
 '''
-    # print(f'input: {text}')
+    print(f'input: {text}')
     print(f'output: ')
     try:
         parse(text)
