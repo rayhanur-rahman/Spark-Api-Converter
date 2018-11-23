@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.24)  8 NOV 2018 10:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.24)  18 NOV 2018 00:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -37,7 +37,6 @@ Package acmart Info: Explicitly selecting natbib mode on input line 118.
 Package acmart Info: Not using anonymous mode on input line 126.
 Package acmart Info: Not using timestamp mode on input line 134.
 Package acmart Info: Not using authordraft mode on input line 144.
-Package acmart Info: Using review mode on input line 153.
 Class acmart Info: Using format sigplan, number 6 on input line 153.
 Class acmart Info: Using fontsize 10pt on input line 211.
 
@@ -620,9 +619,6 @@ s
 \f@nch@O@olf=\skip67
 \f@nch@O@orf=\skip68
 )
-\ACM@linecount@bx=\box34
-\ACM@linecount@bxht=\skip69
-\ACM@linecount=\count127
 \@folio@wd=\dimen140
 \@folio@ht=\dimen141
 \@folio@voffset=\dimen142
@@ -644,62 +640,62 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \cmidrulesep=\dimen150
 \cmidrulekern=\dimen151
 \defaultaddspace=\dimen152
-\@cmidla=\count128
-\@cmidlb=\count129
+\@cmidla=\count127
+\@cmidlb=\count128
 \@aboverulesep=\dimen153
 \@belowrulesep=\dimen154
-\@thisruleclass=\count130
-\@lastruleclass=\count131
+\@thisruleclass=\count129
+\@lastruleclass=\count130
 \@thisrulewidth=\dimen155
 )
 (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
-\c@subfigure=\count132
-\c@subtable=\count133
+\c@subfigure=\count131
+\c@subtable=\count132
 )
-Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 18.
+Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 20.
 
-\c@theorem=\count134
+\c@theorem=\count133
 
 Excluding comment 'screenonly' Include comment 'printonly'
 Include comment 'anonsuppress' (./acmart-sigplanproc-template.aux)
 \openout1 = `acmart-sigplanproc-template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    ... okay on input line 20.
 <<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
-LaTeX Font Info:    Try loading font information for U+msa on input line 18.
+LaTeX Font Info:    Try loading font information for U+msa on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 18.
+LaTeX Font Info:    Try loading font information for U+msb on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Info: Redefining \microtypecontext on input line 18.
+LaTeX Info: Redefining \microtypecontext on input line 20.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -715,8 +711,8 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 (RS)
 )
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box35
-Package hyperref Info: Link coloring OFF on input line 18.
+\AtBeginShipoutBox=\box34
+Package hyperref Info: Link coloring OFF on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -724,11 +720,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count135
+\c@section@level=\count134
 )
-LaTeX Info: Redefining \ref on input line 18.
-LaTeX Info: Redefining \pageref on input line 18.
-LaTeX Info: Redefining \nameref on input line 18.
+LaTeX Info: Redefining \ref on input line 20.
+LaTeX Info: Redefining \pageref on input line 20.
+LaTeX Info: Redefining \nameref on input line 20.
 
 (./acmart-sigplanproc-template.out) (./acmart-sigplanproc-template.out)
 \@outlinefile=\write5
@@ -737,16 +733,16 @@ LaTeX Info: Redefining \nameref on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count136
+\scratchcounter=\count135
 \scratchdimen=\dimen156
-\scratchbox=\box36
-\nofMPsegments=\count137
-\nofMParguments=\count138
+\scratchbox=\box35
+\nofMPsegments=\count136
+\nofMParguments=\count137
 \everyMPshowfont=\toks32
-\MPscratchCnt=\count139
+\MPscratchCnt=\count138
 \MPscratchDim=\dimen157
-\MPnumerator=\count140
-\makeMPintoPDFobject=\count141
+\MPnumerator=\count139
+\makeMPintoPDFobject=\count140
 \everyMPtoPDFconversion=\toks33
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -813,47 +809,45 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (1.93927pt too wide) in paragraph at lines 64--65
+Overfull \hbox (1.93927pt too wide) in paragraph at lines 66--67
 \OT1/cmr/m/n/10 (-20) piece of code in Spark RDD, Dataset and Dataframe
  []
 
 [1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ] [2.2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 143.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 143.
 
 (./acmart-sigplanproc-template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 143.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 143.
 Package rerunfilecheck Info: File `acmart-sigplanproc-template.out' has not cha
 nged.
 (rerunfilecheck)             Checksum: 7122567E3811671AF14EA68B0CCE0391;1100.
  ) 
 Here is how much of TeX's memory you used:
- 15598 strings out of 494586
- 225897 string characters out of 6177801
- 381088 words of memory out of 5000000
- 18719 multiletter control sequences out of 15000+600000
- 16324 words of font info for 92 fonts, out of 8000000 for 9000
+ 15592 strings out of 494586
+ 225808 string characters out of 6177801
+ 374978 words of memory out of 5000000
+ 18715 multiletter control sequences out of 15000+600000
+ 16024 words of font info for 91 fonts, out of 8000000 for 9000
  175 hyphenation exceptions out of 8191
- 60i,16n,94p,1250b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,94p,1250b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/rr/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0600.600pk>
  </home/rr/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.600pk></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mti8.pfb>
-Output written on acmart-sigplanproc-template.pdf (2 pages, 151025 bytes).
+st/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmti8.pfb>
+Output written on acmart-sigplanproc-template.pdf (2 pages, 131490 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
+ 146 PDF objects out of 1000 (max. 8388607)
+ 116 compressed objects within 2 object streams
  38 named destinations out of 1000 (max. 500000)
- 16985 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 16473 words of extra memory for PDF output out of 17280 (max. 10000000)
 
