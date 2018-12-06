@@ -3,7 +3,7 @@ import sys
 
 # just install lark-parser from pip
 
-grammar = open('grammar.lark', 'r').read()
+grammar = open('grammar4.lark', 'r').read()
 parser = Lark(grammar, parser='lalr', keep_all_tokens=True)
 
 def processTree(node, list, prev):
@@ -107,7 +107,7 @@ def parse(program):
 def transform():
     text = r'''sc.range(8,10)
     .textFile('input.txt')
-    .map(x => { val z = x % 2; ( x+2, if (z+3>0) x else y ) } )
+    .map(x=>y)
 '''
     print(f'input: {text}')
     print(f'output: ')
