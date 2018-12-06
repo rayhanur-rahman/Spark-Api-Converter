@@ -149,12 +149,14 @@ def transform(text):
     for x in ls:
         print(f'{x}', end='')
 
-text = r'''sc.range (    8,10)
+text = r'''sc.range(8,10)
 .textFile("input.txt")
 .map(x=>y)
 .reduce(x=>y)
 .reduceByKey(x=>y)
 .sortBy(x=>y)
+.reduce(a=>b)
 '''
+
 
 transform(text)
