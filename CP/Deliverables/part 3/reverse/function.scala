@@ -1,0 +1,1 @@
+def reverse(s: String) = ("" /: s)((a, x) => x + a)

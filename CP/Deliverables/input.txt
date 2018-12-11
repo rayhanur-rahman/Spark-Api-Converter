@@ -1,8 +1,0 @@
-sc.range(5,10)
-.textFile("input.txt")
-.map(x=>y)
-.filter(x=>y)
-.reduce(x=>y)
-.reduceByKey(x=>y)
-.sortBy(x=>y)
-.collect()

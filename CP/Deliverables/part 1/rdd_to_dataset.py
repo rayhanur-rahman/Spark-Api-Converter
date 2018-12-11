@@ -67,7 +67,7 @@ def getFirstNChar(text, n):
 def replaceLPTokens(tokens):
     for index in range(0, len(tokens)):
         if tokens[index] == 'sc':
-            tokens[index] = 'Spark'
+            tokens[index] = 'spark'
 
         if tokens[index] == 'textFile':
             tokens[index] = 'read.textFile'

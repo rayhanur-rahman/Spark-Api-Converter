@@ -52,7 +52,7 @@ def getFirstNChar(text, n):
 def replaceLPTokens(tokens):
     for index in range(0, len(tokens)):
         if tokens[index] == 'sc':
-            tokens[index] = 'Spark'
+            tokens[index] = 'spark'
 
         if tokens[index] == 'textFile':
             tokens[index] = 'read.textFile'
@@ -149,14 +149,22 @@ def transform(text):
     for x in ls:
         print(f'{x}', end='')
 
-text = r'''sc.range(8,10)
-.textFile("input.txt")
-.map(x=>y)
-.reduce(x=>y)
-.reduceByKey(x=>y)
-.sortBy(x=>y)
-.reduce(a=>b)
-'''
+# text = r'''sc.range(8,10)
+# .textFile("input.txt")
+# .map(x=>y)
+# .reduce(x=>y)
+# .reduceByKey(x=>y)
+# .sortBy(x=>y)
+# .reduce(a=>b)
+# '''
+
+text = r'''
+sc.range(1,100)
+  .filter(i => (i%8 == 0))
+  .map(i => (if(i%2 == 0) i/4, 2))
+  .reduceByKey((a:Int, b:Int) => a+b)
+  .collect()
+  '''
 
 text = input('please provide an input:\n')
 
