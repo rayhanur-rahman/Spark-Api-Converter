@@ -10,17 +10,16 @@
 
 \setcopyright{none}
 
-
 \usepackage{booktabs}   %% For formal tables:
                         %% http://ctan.org/pkg/booktabs
 \usepackage{subcaption} %% For complex figures with subfigures/subcaptions
                         %% http://ctan.org/pkg/subcaption
 
-
+\usepackage{listings}
 \begin{document}
 
 %% Title information
-\title[Course Project Writeup - 0]{Course Project Writeup - 0}         
+\title[Final Course Project Report]{Final Course Project Report}         
 \subtitle{SPARK API Converter}                    
 
 
@@ -54,7 +53,7 @@
 
 
 \begin{abstract}
-This report contains the initial concept notes from the SCALA API Converter programming project describing the problem definition, background, related work, methodology, timeline, testing criteria and finally workload distribution.
+This document contains the final report of the SCALA API Converter project which is a course project requirements of CSC512 - Compiler Construction course. The documents highlights the problem definition, motivation, background, related work, methodology, workload distribution, results, limitations and future work direction.
 \end{abstract}
 
 \maketitle
@@ -63,66 +62,364 @@ This report contains the initial concept notes from the SCALA API Converter prog
 \section{The Problem}
 In this project, we need to build a source code converter which can transform these following things along with some additional tasks. 
 \begin{enumerate}
-	\item \textbf{RQ1:} Getting introduced with Apache Spark, setting it up in a docker container and writing some piece of code in Spark RDD, Dataset and Dataframe API
-	\item \textbf{RQ2:} Spark RDD API to Spark Dataset API
-	\item \textbf{RQ3:} Spark RDD API to Spark Dataframe API
-	\item \textbf{RQ4:} Implementing some Spark SQL Api calls to Scala functions
+	\item \textbf{RQ1:} Getting introduced with Apache Spark, setting it up in a docker container and writing some piece of code in Spark RDD, Dataset and Dataframe API. In the project requirement document, it is referred as Part 0
+	\item \textbf{RQ2:} Transforming Spark RDD API to Spark Dataset API. In the project requirement document, it is referred as Part 1
+	\item \textbf{RQ3:} Transforming Spark RDD API to Spark Dataframe API. In the project requirement document, it is referred as Part 2
+	\item \textbf{RQ4:} Implementing some Spark SQL API calls to Scala functions and providing thoughts on how to implement a generic transformer that can transform Scala functions to corresponding SQL code.  In the project requirement document, it is referred as Part 3
 \end{enumerate}
 
 \section{Background and Motivation}
+%TODO 
+...Write as much detail as POSSIBLE of Spark and its corresponding APIs.
+%TODO
+... for the motivation part, write why this type of projects are useful
+
 Spark is very popular these days for distributed computing tasks such as data analysis, graph modeling and machine learning etc. There are three APIs in Spark at present named RDD, Dataset and Dataframe. The three different APIs provide different expressive power to achieve the same thing although the performance gain can be different. Moreover, Spark introduced these three APIs in different times so that there are many existing implementations of Spark based systems that needs to be rewritten to gain better performance. So, an API transformer can be handy to migrate Spark APIs to achieve better performance. Moreover, by doing this, a great understanding will be built on compiler techniques such as scanning and parsing, handling CFG grammar and intermediate representation.  
 
+\subsection{Motivation}
+The problem we are about to work upon largely falls into the domain of source to source compiler or transcompiler. It is a type of compiler where the source code of a program written in one programming language is taken as input and the equivalent source code in another programming language is produced as an output. It is different from traditional compiler in a sense that source-to-source compilers converts one programming language to another where both of those belongs to the same abstraction level whereas a conventional compiler turns a high level language to a low level one. These types of compiler is also useful in case of 
+\begin{itemize}
+    \item transforming legacy code base to a modern counterpart such as structured to OOP design \cite{zou2001framework}
+    \item transforming to newer set of APIs or maintaining issues with backward compatibility
+    \item transforming code in more modular version
+    \item porting a code to different platforms
+    \item reducing technical debt of code base by applying automatic refactoring
+    \item developing new language on top of existing and established language such as \textit{typescript} running on top of \textit{javascript}
+\end{itemize}
+
+In our context, it is already known that, in terms of performance, $dataframe > dataset > RDD$. Hence, a legacy distributed computing focused application written in \textit{Spark RDD} API can be transformed to \textit{Dataset} or \textit{Dataframe} API to extract the best performance from the computing devices. If we can build an automatic transcompiler that can perform aforementioned duty, then it could save a considerable amount of human effort and brings out better performance at the same time. 
+
 \section{Related Work}
-To the best of our knowledge after performing an exhaustive search, there is no automatic transformer for this problem. Although there are some good practices and tutorials on how to convert RDD API code to Dataset and Dataframe API, but those have to be done by a programmer and is a manual, time consuming process. 
+%TODO
+...find some papers
+
 
 \section{Methodology}
-RQ1 and RQ4 are pretty straightforward. All that is needed to be performed is to install docker in the system, deploy the spark image there and then playing with the spark API to learn how to use it. But RQ2 and RQ3 is a sizable task. Here is the abstract thoughts on how to solve these two problems. 
+In this section, the step by step process for each of the task is described below:
+
+\subsection{RQ1}
+%TODO
+...write description for RQ1. Describe the test setup, write something about docker environment... step by step process... give examples of two of each three APIs..
+
+\subsection{RQ2}
+\subsubsection{Execution Environment}
+We implemented a python program that can handle the requirements stated in RQ2. Our machine was a typical laptop computer. Here is the description of the execution environment.
+
+\begin{table}[]
+\begin{tabular}{|l|l|lll}
+\cline{1-2}
+Operating System & Arch Linux           &  &  &  \\ \cline{1-2}
+Kernel Version   & 4.19                 &  &  &  \\ \cline{1-2}
+Python Version   & 3.7                  &  &  &  \\ \cline{1-2}
+Processor        & Core i7 8550U 1.8GHz &  &  &  \\ \cline{1-2}
+Memory           & 16 GB 2400 MHz       &  &  &  \\ \cline{1-2}
+DIsk             & 240GB SSD            &  &  &  \\ \cline{1-2}
+\end{tabular}
+\caption{Execution Environment for RQ2}
+\label{tab:env}
+\end{table}
+
+\subsubsection{Libraries}
+We used raw pythond codes to do the task. No additional library modules were used to achieve the goal for this task.
+
+\subsubsection{The Goal}
+For this following input:
+\begin{lstlisting}
+sc.range(1,10000000)
+.map(i=>(i%11, 1))
+.reduceByKey((a:Int, b:Int) => a+b)
+.collect()
+\end{lstlisting}
+
+We need to produce the following output:
+\begin{lstlisting}
+spark.range(1,10000000)
+.map(i=>(i%11, 1))
+.groupByKey(_._1)
+.agg(reduceByKeyAggregator((a:Int, b:Int) 
+=> a+b))
+.collect()
+\end{lstlisting}
+
+\subsubsection{Algorithm}
+Here is the step by step process on how we achieved the requirements of RQ2.
+
+
+\begin{figure}[h]
+	\includegraphics[width=6cm,height=4cm,keepaspectratio]{fig/t1.png}
+	\caption{Transformation Rules}
+	\label{fig:token}
+\end{figure}
+
+\begin{lstlisting}[caption=token definition, label=list:token]
+<letter> --> a | b | ... | y | z 
+| A | B | ... | Z | 
+<digit> --> 0 | 1 | ... | 9
+<number> --> <digit>+
+<identifier> --> <letter> (<letter> 
+| <digit>)*
+<string> --> any string between (and 
+including) the closest pair of double 
+quotation marks.
+<char> --> a character between (and 
+including) a pair of single quotation 
+marks.
+<symbol> --> any non-space character 
+that is not a part of other tokens
+\end{lstlisting}
 
 \begin{enumerate}
-	\item \textbf{RQ2:} It should not be that much challanging. A tokenizer needs to be developed that can extract all the tokens from a RDD API code sequence. Then, using the RDD to Dataframe transformation rule, the RDD tokens need to be replace with the corresponding Dataframe tokens.
-	\item \textbf{RQ3:} It is not that straightforward as the previous task. Apart from the tokenizer, a parser needs to developed that can build an AST of the RDD API. For parsing, the provided grammar needs to be also converted to a LL1 or LR1 as the provided grammar is ambiguous. After building the AST, UDF part from the RDD API needs to be extracted and replaced with the SQL API. But this is challenging because a custom set of SQL rules and grammars need to be developed to replace UDF tokens with SQL. tokens. Basically, a lambda expression needs to be converted to a declarative SQL expression to achieve the goal. 
-\end{enumerate}  
+    \item First we took the whole input as a simple python string object. 
+    \item We filtered all the new line, carriage returns and tabs from that string
+    \item We wrote regular expression checker using python's default \textit{re} module for the following tokens highlighted in list \ref{list:token}
+    \item After that, we read the whole string one character at a time and tokenized the whole string
+    \item we replaced the tokens according to the transformation rules mentioned above
+    \item just replacing the tokens does not actually do the whole job. We needed to match the opening brackets and closing brackets associated with each of the tokens and then we replaced the tokens and appended corresponding tokens after the right parenthesis according to the transformation rules
+\end{enumerate}
 
-\section{Testing Criteria}
-The transformer program should be standalone and self packaged. Hence, there should be no need for configuration or settings file. It will be designed in such a way so that the tester can test it just by running the scripts and providing appropriate input files. Custom test cases can be written as well to test some sample inputs and outputs. The programming language that is preferred to be used is either Java or Python with ANTLR4 for handling the grammar. However, the whole scanner and parser can also be written from scratch. The code samples as input and produced output code samples must preserve the same meaning and produce the same result. That should be the key testing criteria. 
+\subsubsection{Sample Test Cases}
+%TODO
+... put some test cases here
+
+\subsubsection{Discussions}
+Here is some of the observation we came through while implementing the RQ2.
+\begin{itemize}
+    \item Our transformed would not work if there will be any identifier having names that is present in the transformation table. For example, this following statement will produce an error.
+    \begin{lstlisting}
+        map(x => sc)
+    \end{lstlisting}
+    Because \textit{sc} is already in the transformation table.
+    \item This phenomenon happens because the transformed would not know if the \textit{sc} is an identifier or an object. This aforementioned problem could have been solved if we could have constructed the whole grammar for the Spark RDD API. But developing a full fledged grammar was an infeasible task, hence we did not implemented it. If the grammar was there, then it was fully possible to first parsing the tokens, building an abstract syntax tree and replace the nodes with corresponding nodes according to the transformation rules. 
+\end{itemize}
+
+\subsection{RQ3}
+\subsubsection{Execution Environment}
+The environment details are as same as Table \ref{tab:env}.
+
+\subsubsection{Libraries}
+Initially we planned to build the whole transformer, (i.e. scanner, parser, tree) from scratch. Later, we found out that there are some existing excellent framework for doing these types of tasks with \textit{ANTLR, YACC, JavaCC, Scala Parser Combinators} etc. However, finally we choose a framework named \textit{Lark} which is written in pure Python to generate scanners and parsers for our goal. Lark can:
+\begin{itemize}
+    \item Parse all context-free grammars, and handle all ambiguity
+    \item Build a parse-tree automatically, no construction code required
+    \item Outperform all other Python libraries when using LALR(1) (Yes, including PLY)
+    Run on every Python interpreter (it's pure-python) Generate a stand-alone parser (for LALR(1) grammars)
+\end{itemize}
+
+We didn't choose the De Facto \textit{ANTLR} as it is heavy and initial learning curving is a bit steep despite being a powerful framework for these type of tasks. 
+
+\subsubsection{The Goal}
+For the following input, 
+\begin{lstlisting}
+sc.range(10,100)
+.map(i=>{val j=i%3;
+(i, if(j==0)i*10 else i*2)})
+.map(r=>r._1+r._2)
+.collect()
+\end{lstlisting}
+We have to produce the following output,
+\begin{lstlisting}
+spark.range(10,100).selectExpr("id as _1")
+.selectExpr("_1 as _1", 
+"if(_1%3==0,_1*10,_1*2) as _2")
+.selectExpr("_1+_2 as _1")
+.collect()
+\end{lstlisting}
+
+\subsubsection{Algorithm}
+The step by step process to achieve the goal stated in RQ3 is mentioned below.
+
+\begin{lstlisting}[caption=UDF Grammar, label=list:g1]
+<Program> ::= sc.range(<number>,<number>)
+<MapOps>.collect()
+<MapOps> ::= epsilon | <MapOps>.map(<UDF>)
+<UDF> ::= <identifier> => <Expression>
+<Expression> ::= {<ComplexExpr>} 
+    | <SimpleExpr>
+<SimpleExpr> ::= <PureExpr> 
+    | (<TupleExpr>)
+<TupleExpr> ::= <PureExpr>, <PureExpr> 
+| <TupleExpr>, <PureExpr>
+<ComplexExpr> ::= <SimpleExpr> 
+    | <AssignExprs>;<SimpleExpr>
+<AssignExprs> ::= <AssignExpr> 
+    | <AssignExprs>;<AssignExpr>
+<AssignExpr> ::= val <identifier> = 
+<PureExpr>
+<PureExpr> ::= <identifier> 
+    |<identifier>.<identifier> 
+    |(<PureExpr>) 
+    |<PureExpr> <Op> <PureExpr> 
+    |if ( <CompExpr>) <PureExpr> else 
+    <PureExpr>
+    <CompExpr> ::= <PureExpr> <Comp> 
+    <PureExpr>
+    <Op> ::= + | - | * | %
+<Comp> ::= == | < | > | != | >= | <=
+\end{lstlisting}
+
+\begin{lstlisting}[caption=lark grammar, label=list:g2]
+// rdd grammar
+start : SC actions*
+    actions : DOT RANGE LP rangeparams* RP
+            | DOT TEXTFILE LP URI RP
+            | DOT MAP LP func RP
+            | DOT FILTER LP func RP
+            | DOT REDUCE LP func RP 
+            | DOT REDUCEBYKEY LP func RP
+            | DOT SORTBY LP func RP
+            | DOT COLLECT LP RP
+
+    rangeparams : NUMBER (COMMA NUMBER)?
+
+
+    func : ID ARROW expression
+    expression : simpleexpression
+               | LB complexexpression RB
+    simpleexpression : pureexpression
+                     | LP tupleexpression RP
+    tupleexpression : pureexpression COMMA 
+                    pureexpression 
+                    | tupleexpression COMMA 
+                    pureexpression
+    complexexpression : simpleexpression
+                      | assignmentexpressions 
+                      SEMICOLON 
+                      simpleexpression
+    assignmentexpressions : 
+    assignmentexpression 
+    | assignmentexpressions SEMICOLON 
+    assignmentexpression
+    assignmentexpression : 
+    VAL ID EQUAL pureexpression
+    pureexpression : NUMBER
+                   | ID
+                   | ID DOT ID
+                   | LP pureexpression RP
+                   | pureexpression OP 
+                   pureexpression
+                   | IF LP 
+                   comparisonexpression 
+                   RP pureexpression 
+                   ELSE pureexpression
+    comparisonexpression : pureexpression 
+                    COMP pureexpression
+
+    SC : "sc"
+    VAL : "val"
+    IF : "if"
+    ELSE : "else"
+    EQUAL : "="
+    DOT : /[.]/
+    OP : /[ ]*["+"\-*""%"][ ]*/
+    COMP : ( /[ ]*[=][=][ ]*/ 
+    | /[ ]*[>][ ]*/ | /[ ]*[<][ ]*/ 
+    | /[ ]*[!][=][ ]*/ 
+    | /[ ]*[>][=][ ]*/ 
+    | /[ ]*[<][=][ ]*/ )
+    COMMA : /[,]/
+    SEMICOLON : /[;]/
+    ARROW : /[ ]*[=][>][ ]*/
+    LB : /[ ]*[{][ ]*/
+    RB : /[ ]*[}][ ]*/
+    LP : /[ ]*["("][ ]*/
+    RP : /[ ]*[")"][ ]*/
+    RANGE : "range"
+    TEXTFILE : "textFile"
+    MAP : "map"
+    FILTER : "filter"
+    REDUCE : "reduce"
+    REDUCEBYKEY : "reduceByKey"
+    SORTBY : "sortBy"
+    COLLECT : "collect"
+
+    URI : ( /["\""]/ | /["'"]/ ) 
+    /[\\\a-zA-Z.:\/]*/ 
+    ( /["\""]/ | /["'"]/ )
+    //FUNC : "<func>"
+
+    %import common.CNAME -> ID
+    %import common.SIGNED_NUMBER 
+    -> NUMBER
+    %import common.WS
+    %ignore WS
+\end{lstlisting}
+
+\begin{figure}[h]
+	\includegraphics[width=6cm,height=4cm,keepaspectratio]{fig/t2.png}
+	\caption{Transformation Rules}
+	\label{fig:t2}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[width=6cm,height=4cm,keepaspectratio]{fig/d.png}
+	\caption{Flowchart of RQ3}
+	\label{fig:d}
+\end{figure}
+
+\begin{enumerate}
+    \item First, we need to have a grammar upon which the parser and abstract syntax tree will be built upon. The grammar has been given in the list \ref{list:g1}
+    \item As we used \textit{lark-parser} for the task of parsing and generating abstract syntax tree, we needed to transform the grammar to feed into the lark-parser convention. That grammar is given in list \ref{list:g2}
+    \item we developed an abstract syntax tree on top of the \textit{lark-parser}. 
+    \item we extracted the tokens which were needed to be replaced according to the transformation rules given in figure \ref{fig:t2}
+    \item the most challenging part is obviously transforming the UDF to SQL. There are actually two source of difficulties in transforming UDF to SQL. First one is to figure out the dependencies of the variables of \textit{AssignExprs}. The second one is to convert the \textit{if-else} portion of the UDF to corresponding SQL syntax. 
+    \item For the first challenge, we extracted the UDF portion from the input first. Then we separated the variable declaration part from the rest of the expression. Then we determined the dependency of the variables and replaced all the variables with appropriate mathematical expression. At the end, all the declared variables were replaced. 
+    \item For the second challenge, we parsed the \textit{if-else} and nested \textit{if-else} statements using a \textit{stack} based data structures. Then we replaced all the variables of conditions with the root variable that came from the input of the lambda expression. \item Finally, we replaced the input variables with Spark SQL column identifier such as \textit{\_1, \_2} etc.
+\end{enumerate}
+
+The whole step by step process is also represented as flowchart in figure \ref{fig:d}.
+
+\subsubsection{Sample Test Cases}
+%TODO
+...provide some sample test cases
+
+\subsubsection{Discussion}
+Here is some observation we came through while implementing RQ3.
+
+\begin{itemize}
+    \item Our implementation only works for the simple UDF functions as provided in the grammar described in the project requirements
+    \item Our implementation contains parenthesis to preserve the meaning of mathematical formulas. In some cases, those brackets were redundant though.
+    \item Handling the nested \textit{if-else} was particularly challenging. 
+    \item We assume that, there might be a more elegant solution to achieve the goal of RQ3. For example, the whole thing could have done recursively using abstract syntax tree and intermediate code representation. For example, a directed acyclic graph could have been drawn to identify the data flow and variable dependencies. 
+    \item Moreover, the nested \textit{if-else} statements could have automatically constructed with the abstract syntax tree. After that, a recursive transformer could have converted those expression to corresponding SQL statements. 
+\end{itemize}
+
+\subsection{RQ4}
+%TODO
+... same as RQ1
+
+\subsubsection{How a Generic Scala to SQL Transformer can be Built}
+Although, in this course project, we have implemented a simple transformer that can basically transform simple UDF in lambda queries to Spark SQl syntax. But, that can be generalized to whole bunch of full fledged scala lambda queries to SQL. In order to do that, we can build an expression tree which will contain each lambda expressions \textit{left}, \textit{operator}, \textit{right} and the \textit{node type} information. Expressions can be of these following types: 
+\begin{itemize}
+    \item \textbf{unary:} An operation with a single operand such as negation
+    \item \textbf{binary: }An operation with two operands such as addition or \&\& or ||.
+    \item \textbf{parameter: }An input to a lambda function
+    \item \textbf{member: }Accessing a property, field, or method of an object or a variable. 
+    \item \textbf{constant: }A node that is a constant value
+\end{itemize}
+
+After constructing the tree, we can recursively traverse each nodes and generate the equivalent SQL queries for each nodes. For example, if a node contains \textit{startsWith} method, we can generate the SQL query contain \textit{LIKE} operator. However, it might be the case that not all Scala operations are automatically transformable to the corresponding SQL queries, i.e., custom functions. 
+
+\section{How to setup Testing Environment}
+The transformer program is standalone and self packaged. Hence, there is no need for configuration or settings file. It is designed in such a way so that the tester can test it by just running the scripts and providing appropriate input files. Custom test cases can be written as well to test some sample inputs and outputs. The code samples as input and produced output code samples must preserve the same meaning and produce the same result according to the transformation table. That is the key testing criteria. Our test programs for Part 0 and Part 3 are written in Scala. For the part 1 and part 2, the test programs are written in Python. Here are the requirements to run the test programs.
+
+\begin{itemize}
+    \item Linux or Mac OSX
+    \item Docker container where Apache Spark has been setup
+    \item Python3
+    \item \textit{lark-parser} python package 
+\end{itemize}
 
 \section{Workload Distribution}
-These are the breakdown of the whole project work:
-\begin{enumerate}
-	\item Setting up Spark and writing programs in three different API - Maruful
-	\item Building a Scanner for RDD - Rayhanur
-	\item Replacing RDD tokens with Dataset tokens - Rayhanur
-	\item Building a Parser for RDD - Rayhanur
-	\item Building an AST generator for RDD - Rayhanur
-	\item Converting the provided grammar to LL1 or LR1 - Rayhanur
-	\item Developing custom rules for Spark SQL - Maruful
-	\item Converting RDD UDF to Spark SQL - Maruful
-	\item Writing Scala functions for several Spark SQL Api - Maruful
-\end{enumerate}
+After completing the whole task, here is the workload distribution for our team.
+\begin{itemize}
+    \item Part 0: Done by Maruful
+    \item Part 1: Done by Rayhanur
+    \item Part 2: Done by Rayhanur and Maruful
+    \item Part 3: Done by Maruful and Rayhanur
+\end{itemize}
 
-\section{Timeline}
-\begin{enumerate}
-	\item Part 0 \& 1 is expected to be finished by November 7
-	\item Part 2 \& 3 is expected to be finished by November 28
-	\item Other miscellaneous task such as report writing, test cases, packaging are expected to be finished by December 1
-\end{enumerate}
 
-\section{Update}
-We have made satisfactory progress so far. Here is the list of things we have completed so far.
 
-\begin{enumerate}
-	\item \textbf{Part 0:} According to the aforementioned timeline, we have finished setting up Apache Spark environment via docker and writing 6 functions each in RDD, Dataset and Dataframe API.
-	\item \textbf{Part 1:}  We have also completed transforming scala sources written in RDD API to Dataset APIs. Initially we planned to build the whole transformer, (i.e. scanner, parser, tree) from scratch. Later, we found out that there are some existing excellent framework for doing these types of tasks with \textit{ANTLR, YACC, JavaCC, Scala Parser Combinators} etc. However, finally we choose a framework named \textit{Lark} which is written in pure Python to generate scanners and parsers for our goal. We didn't choose the De Facto \textit{ANTLR} as it is heavy and initial learning curving is a bit steep despite being a powerful framework for these type of tasks. By using \textit{Lark}, we first had to write a grammar in BNF for RDD API. As there has been no grammar provided for the RDD API in the project details documents given to us, we built that grammar on our own. Then we passed that grammar to the \textit{Lark} and it automatically generated tokenizer and parser for it. Then we simply did the tasks mentioned in Part 1 by just replacing the tokens with corresponding tokens in the parse tree generated by \textit{Lark}. We used Python for these tasks.
-	\item \textbf{Part 2:} We have also partially completed these part as well till generating SQL from UDF codes. By using \textit{Lark} we generated AST from the grammar that has been provided to us. It is mention-worthy that, we needed to modify the grammar a little bit to feed it to \textit{Lark} framework. Now we are studying the structural properties of UDF and SQL. Our UDF to SQL transformer will be built on those difference of structural properties found in the grammar of UDF and SQL. 
-\end{enumerate}
-
-The milestones and workload distribution we completed so far is still as per the initial plan we submitted. However, it is likely that there would be a slight change in the remaining tasks and workloads. Because, as we planned to build scanner and parser from the scratch, our initial workload distribution reflected that as well. But as we used a tool, so that our workload has been reduced a little bit and so that we will adjust that in the subsequent tasks. However, the timeline is expected to remain same. So, a recap of the tasks is given in the following:
-\begin{enumerate}
-	\item \textbf{Part 0:} Done by Maruful
-	\item \textbf{Part 1:} Done by Rayhanur
-	\item \textbf{Part 2:} Partially done by Rayhanur. Rest of the tasks will be done according to the timeline. 
-	\item \textbf{Part 3:} Not started yet. It will be done according to the timeline.
-\end{enumerate} 
 
 
 
@@ -131,8 +428,8 @@ The milestones and workload distribution we completed so far is still as per the
 
 
 %% Bibliography
-%\bibliography{bibfile}
-%\bibliographystyle{ACM-Reference-Format}
+\bibliography{bibfile}
+\bibliographystyle{ACM-Reference-Format}
 %
 %
 %%% Appendix

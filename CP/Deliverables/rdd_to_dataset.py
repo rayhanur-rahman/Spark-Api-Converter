@@ -1,5 +1,20 @@
 import sys, re
 
+# text = r'''sc.range(8,10)
+# .textFile("input.txt")
+# .map(x=>y)
+# .reduce(x=>y)
+# .reduceByKey(x=>y)
+# .sortBy(x=>y)
+# .reduce(a=>b)
+# '''
+
+# text = input('please provide an input:\n')
+
+input = open('input.txt', 'r')
+text = input.read()
+
+
 def checkForNumber(text):
     pattern = r'^[0-9]+$'
     match = re.match(pattern, text)
@@ -136,6 +151,7 @@ def transform(text):
             else:
                 n += 1
 
+    print('input: ', end='\n')
     for x in ls:
         print(f'{x}', end='')
 
@@ -146,18 +162,10 @@ def transform(text):
     replaceReduceByKeyTokens(ls)
     replaceSortByTokens(ls)
 
+    print('output: ', end='\n')
+
     for x in ls:
         print(f'{x}', end='')
-
-text = r'''sc.range(8,10)
-.textFile("input.txt")
-.map(x=>y)
-.reduce(x=>y)
-.reduceByKey(x=>y)
-.sortBy(x=>y)
-.reduce(a=>b)
-'''
-
-text = input('please provide an input:\n')
+    print('')
 
 transform(text)

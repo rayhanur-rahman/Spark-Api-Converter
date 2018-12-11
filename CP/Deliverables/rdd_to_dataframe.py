@@ -1,5 +1,5 @@
 from lark import Lark, lexer, tree
-import sys, App3, re
+import sys, Utils, re
 from lark import Transformer
 
 closures = ''
@@ -39,7 +39,7 @@ class AST(Transformer):
                 returnStatement = returnStatement + element
                 if element == 'else': returnStatement = returnStatement + ' '
 
-        mapbody = App3.MapBody()
+        mapbody = Utils.MapBody()
         mapbody.returnStatement = returnStatement
         mapbody.pureexpressions = pureexpressions
         mapbody.closures = closures
@@ -164,12 +164,12 @@ def parse(program):
     x = AST().transform(parse_tree)
 
     for mapBody in mapBodies:
-        sqlstmt = App3.processAssignmentStatements(mapBody)
+        sqlstmt = Utils.processAssignmentStatements(mapBody)
         for element in sqlstmt:
-            s = App3.ifRecurse(element)
-            App3.abc(s)
+            s = Utils.ifRecurse(element)
+            Utils.abc(s)
             ls = []
-            App3.xyz(s, ls)
+            Utils.xyz(s, ls)
             for x in ls:
                 x = x.strip()
             mapBody.sqlStatements.append(ls)
@@ -199,7 +199,6 @@ def parse(program):
     replaceRangeTokens(tokens, terminals)
     replaceMapTokens(tokens, terminals, mapBodies)
 
-    print('')
     for token in tokens:
         if token == 'if' or token == 'else' or token == 'val':
             print(' ', end="")
@@ -207,16 +206,19 @@ def parse(program):
         if token == 'if' or token == 'else' or token == 'val':
             print(' ', end="")
 
+    print('')
 
 def transform():
-    text = r'''sc.range(8,10)
-    .map(x=>x+length)
-    .map(i => {val j = i%3; (i, if (j==0) i*10 else i*2 ) } )
-    .map(r=> r._1+r._2)
-    .collect()
-'''
+    # text = r'''sc.range(8,10)
+    # .map(x=>x+length)
+    # .map(i => {val j = i%3; (i, if (j==0) i*10 else i*2 ) } )
+    # .map(r=> r._1+r._2)
+    # .collect()
+# '''
+    input = open('input.txt', 'r')
+    text = input.read()
     print('input:')
-    print(text)
+    print(text, end='\n\n')
     print(f'output: ')
     try:
         parse(text)

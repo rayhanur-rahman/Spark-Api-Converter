@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{0}
+\begin{thebibliography}{1}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -36,5 +36,16 @@
 \providecommand\bibinfo[2]{#2}
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Zou and Kontogiannis}{Zou and
+  Kontogiannis}{2001}]%
+        {zou2001framework}
+\bibfield{author}{\bibinfo{person}{Ying Zou} {and} \bibinfo{person}{Kostas
+  Kontogiannis}.} \bibinfo{year}{2001}\natexlab{}.
+\newblock \showarticletitle{A framework for migrating procedural code to
+  object-oriented platforms}. In \bibinfo{booktitle}{\emph{apsec}}. IEEE,
+  \bibinfo{pages}{390}.
+\newblock
+
 
 \end{thebibliography}
