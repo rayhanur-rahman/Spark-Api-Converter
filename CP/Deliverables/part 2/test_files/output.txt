@@ -1,0 +1,33 @@
+case 1
+[rr@rr-pc part 2]$ python3 rdd_to_dataframe.py 
+input:
+sc.range(1,10)
+  .map(x => (x + 2, if(x + 3 > 6) x else 1 ) )
+  .collect()
+
+
+output: 
+spark.range(1,10).selectExpr("id as _1").selectExpr("_1 + 2 as _1", "if(_1 + 3 > 6, _1, 1  ) as _2").collect()
+
+case 2
+[rr@rr-pc part 2]$ python3 rdd_to_dataframe.py 
+input:
+sc.range(15,30)
+  .map(x => { val r = x % 5; ( x, if((5 * r) > 10) r - r else if (r == 0) r + r else r * r ) } )
+  .collect()
+
+
+output: 
+spark.range(15,30).selectExpr("id as _1").selectExpr("  _1 as _1", "if((5 * (_1 % 5)) > 10, (_1 % 5) - (_1 % 5),if((_1 % 5) == 0, (_1 % 5) + (_1 % 5), (_1 % 5) * (_1 % 5)  )) as _2").collect()
+
+case 3
+[rr@rr-pc part 2]$ python3 rdd_to_dataframe.py 
+input:
+sc.range(1,10)
+  .map(x => { val z = x % 2; val y = z + 5; val m = x + y * z; ( x + 2 - y, if (z + 3 > 0) x else m - z, x * y + z) } )
+  .map(r => r._1 * r._2 - r._3)
+  .collect()
+
+
+output: 
+spark.range(1,10).selectExpr("id as _1").selectExpr("  _1 + 2 - ((_1 % 2) + 5) as _1", "if((_1 % 2) + 3 > 0, _1, (_1 + ((_1 % 2) + 5) * (_1 % 2)) - (_1 % 2)) as _2", "_1 * ((_1 % 2) + 5) + (_1 % 2)  as _3").selectExpr("_1 * _2 - _3 as _1").collect() 

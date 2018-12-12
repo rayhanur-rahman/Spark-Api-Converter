@@ -1,0 +1,21 @@
+case 1
+[rr@rr-pc part 1]$ python3 rdd_to_dataset.py 
+input: 
+sc.range(1,100000)  .filter(i => (i%5 == 0))  .reduce((a:Long, b:Long) => a+b)
+output: 
+spark.range(1,100000)  .filter(i => (i%5 == 0))  .select(reduceAggregator((a:Long, b:Long) => a+b)).collect()
+
+case 2
+[rr@rr-pc part 1]$ python3 rdd_to_dataset.py 
+input: 
+sc.textFile("sample.txt")  .map(line => line.split(" ").size)  .reduce((a:Int, b:Int) => if (a > b) a else b)
+output: 
+spark.read.textFile("sample.txt")  .map(line => line.split(" ").size)  .select(reduceAggregator((a:Int, b:Int) => if (a > b) a else b)).collect()
+
+case 3
+[rr@rr-pc part 1]$ python3 rdd_to_dataset.py 
+input: 
+sc.range(1,100)  .filter(i => (i%8 == 0))  .map(i => (i/4, 2))  .reduceByKey((a:Int, b:Int) => a+b)  .collect()
+output: 
+spark.range(1,100)  .filter(i => (i%8 == 0))  .map(i => (i/4, 2))  .groupByKey(_._1).agg(reduceByKeyAggregator((a:Int, b:Int) => a+b))  .collect()
+ 
