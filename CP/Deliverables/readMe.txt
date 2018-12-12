@@ -1,5 +1,6 @@
 PART 0:
-All of the 6 programs are included in 6 different directories of folder named "part 0". Each directory contains 3 different scala code for RDD, Dataset and Dataframe.
+All of the 6 programs are included in 6 different directories of folder named "part 0". 
+Each directory contains 3 different scala code for RDD, Dataset and Dataframe.
 
 
 PART 1:
