@@ -2,7 +2,6 @@ PART 0:
 All of the 6 programs are included in 6 different directories of folder named "part 0". Each directory contains 3 different scala code for RDD, Dataset and Dataframe.
 
 
-
 PART 1:
 you need to have python3 in your system
 Go to the folder named "part 1". 
@@ -12,7 +11,7 @@ run the following command (for Linux):
 python3 rdd_to_dataset.py
 if you want to test with another test case, edit the input.txt file
 note that, you should only insert one test case in the input.txt each time
-in the test_files folder, you can find some sample inputs and outputs
+in the test_files folder, you can find some sample inputs, required text file (sample.txt) for testing and outputs.
 
 
 PART 2:
